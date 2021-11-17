@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblBankalar>
+
+@{
+    ViewBag.Title = "BankaHesablarim";
+}
+<body>
+
+    
+    <div class="container" style="margin-top:10px">
+        <h3>Banka Hesapları</h3>
+        <p>
+            @Html.ActionLink("Banka Ekle", "BankaEkle")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Banka
+                </th>
+                <th>
+                    İban No
+                </th>
+                <th>
+                    Hesap No
+                </th>
+                <th>
+                    Hesap İsmi
+                </th>
+     
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankaAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IbanNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HesapNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Isim)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Düzenle", "BankaDuzenle", new { id = item.Id }) |
+                        @Html.ActionLink("Sil", "BankaSil", new { id = item.Id }) |
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+
+

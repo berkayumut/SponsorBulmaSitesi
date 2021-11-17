@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblPaketler>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaketAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaketAciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KTakipciSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyati)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaketAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaketAciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KTakipciSayisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyati)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

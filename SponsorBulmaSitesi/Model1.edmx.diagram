@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44e17875dfe04235a33f7a63b015f0a8" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="DBBonusSMModel.sysdiagrams" Width="1.5" PointX="5.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblFenomenler" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblPaketler" Width="1.5" PointX="14" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblSayfalar" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblUyeler" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="DBBonusSMModel.FK_TblSayfalar_TblUyeler" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblCekilisler" Width="1.5" PointX="9.125" PointY="0.75" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblTalepler" Width="1.5" PointX="11.875" PointY="0.875" />
+        <AssociationConnector Association="DBBonusSMModel.FK_TblTalepler_TblPaketler" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblAdmin" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblBankalar" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblMetaEtiketleri" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblYorumlar" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblPaketKategoriler" Width="1.5" PointX="5" PointY="9.25" />
+        <AssociationConnector Association="DBBonusSMModel.FK_TblPaketler_TblPaketKategoriler" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblYaziKategori" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblYazilar" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="DBBonusSMModel.TblYaziYorumlar" Width="1.5" PointX="5.25" PointY="12.125" />
+        <AssociationConnector Association="DBBonusSMModel.FK_TblYazilar_TblYaziKategori" />
+        <AssociationConnector Association="DBBonusSMModel.FK_TblYaziYorumlar_TblYazilar" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,158 @@
+﻿@model SponsorBulmaSitesi.TblSatilanPaketler
+@{
+    ViewBag.Title = "UyeTalepGuncelle";
+}
+
+
+
+<body>
+    <div class="container" style="margin-top:10px">
+        <label style="color:red;font-size:large">@ViewBag.Bilgi</label>
+        <div class="col-md-5 col-lg-7">
+            <h3 style="color:#ed0000">Talep Bilgileri</h3>
+            <div>
+                <h5><b style="color:#ed0000">Talep Kodu: </b>@Model.SatisKodu</h5>
+            </div>
+
+            <div>
+                <h5><b style="color:#ed0000">Talep Açıklama: </b>@Model.Aciklama</h5>
+            </div>
+            <div>
+                <h5><b style="color:#ed0000">Talep Kitle Cins.: </b>@Model.KitleCinsiyet</h5>
+            </div>
+            <div>
+                <h5><b style="color:#ed0000">Talep Kitle Yaş: </b>@Model.KitleYas</h5>
+            </div>
+            <div>
+                <h5><b style="color:#ed0000">Talep Paket Adı: </b>@Model.TblPaketler.PaketAdi</h5>
+            </div>
+            <div>
+                <h5><b style="color:#ed0000">Talep Tarih: </b>@Model.Tarih</h5>
+            </div>
+            <div>
+                <h5><b style="color:#ed0000">İnstagram Sayfası: </b>@Model.TblSayfalar.SayfaAdi</h5>
+            </div>
+            <div>
+              <h5>Dekont:</h5>  <a href="~/Images/Dekontlar/@Model.DekontFoto" rel="lightbox" title="my caption"><img src="~/Images/Dekontlar/@Model.DekontFoto" width="60" height="60" /></a>
+            </div>
+        </div>
+        <hr />
+        <div class="col-md-7 col-lg-7">
+            <form method="post" action="/Admin/UyeTalepGuncelle">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="row">
+                    <h4 style="color:#ed0000">Dekont Durumu</h4>
+                    @if (Model.DekontDurumu == "Gönderilmedi")
+                    {
+                        <select class="form-control" name="dekontdurumu">
+                            <option selected value="Gönderilmedi">Gönderilmedi</option>
+                            <option value="Gönderildi">Gönderildi</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Onaylanmadı">Onaylanmadı</option>
+                        </select>
+                    }
+                    else if (Model.DekontDurumu == "Gönderildi")
+                    {
+                        <select class="form-control" name="dekontdurumu">
+                            <option value="Gönderilmedi">Gönderilmedi</option>
+                            <option selected value="Gönderildi">Gönderildi</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Onaylanmadı">Onaylanmadı</option>
+                        </select>
+                    }
+                    else if (Model.DekontDurumu == "Onaylandı")
+                    {
+                        <select class="form-control" name="dekontdurumu">
+                            <option value="Gönderilmedi">Gönderilmedi</option>
+                            <option value="Gönderildi">Gönderildi</option>
+                            <option selected value="Onaylandı">Onaylandı</option>
+                            <option value="Onaylanmadı">Onaylanmadı</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select class="form-control" name="dekontdurumu">
+                            <option value="Gönderilmedi">Gönderilmedi</option>
+                            <option value="Gönderildi">Gönderildi</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option selected value="Onaylanmadı">Onaylanmadı</option>
+                        </select>
+                    }
+
+                </div>
+                <div class="row">
+                    <h4 style="color:#ed0000">Durum</h4>
+                    @if (Model.Durum == "Onaylandı")
+                    {
+                        <select class="form-control" name="durum">
+                            <option value="Beklemede">Beklemede</option>
+                            <option selected value="Onaylandı">Onaylandı</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tamamlandı">Tamamlandı</option>
+                        </select>
+                    }
+                    else if (Model.Durum == "Aktif")
+                    {
+                        <select class="form-control" name="durum">
+                            <option value="Beklemede">Beklemede</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option selected value="Aktif">Aktif</option>
+                            <option value="Tamamlandı">Tamamlandı</option>
+                        </select>
+                    }
+                    else if (Model.Durum == "Tamamlandı")
+                    {
+                        <select class="form-control" name="durum">
+                            <option value="Beklemede">Beklemede</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Aktif">Aktif</option>
+                            <option selected value="Tamamlandı">Tamamlandı</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select class="form-control" name="durum">
+                            <option selected value="Beklemede">Beklemede</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tamamlandı">Tamamlandı</option>
+                        </select>
+                    }
+                </div>
+                <div class="row">
+                    <h4 style="color:#ed0000">Ödeme Durumu</h4>
+                    @if (Model.OdemeDurumu == "Ödendi")
+                    {
+                        <select class="form-control" name="odemedurum">
+                            <option value="Ödenmedi">Ödenmedi</option>
+                            <option selected value="Ödendi">Ödendi</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select class="form-control" name="odemedurum">
+                            <option selected value="Ödenmedi">Ödenmedi</option>
+                            <option value="Ödendi">Ödendi</option>
+                        </select>
+                    }
+
+                </div>
+                <div class="row">
+                    <h4 style="color:#ed0000">Çekiliş Link</h4>
+                    <input type="text" name="cekilislink" class="form-control" value="@Model.CekilisLink" />
+                </div>
+                <br />
+                <div>
+                    <input type="submit" class="btn btn-outline-success" value="Güncelle" />
+                </div>
+                <input type="hidden" name="Foto" value="@Model.DekontFoto" />
+            </form>
+            <hr />
+            <div>
+                @Html.ActionLink("Geri Dön", "../admin/anasayfa")
+            </div>
+        </div>
+    </div>
+</body>
+
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblYorumlar>
+<div class="row">
+    <div class="comments-container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">YORUMLARINIZ</h2>
+            <h3 class="section-subheading text-muted">Müşterilerimizin ve sayfa kullanıcılarının yorumlarına burada yer verdik.  İsterseniz sizde yorum yapabilirsiniz. </h3>
+        </div>
+        <ul id="comments-list" class="comments-list">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <div class="comment-main-level">
+                        <div class="comment-avatar">
+                            <img src="~/Images/yorum.png" />
+                        </div>
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author"><b>@item.YorumAdi</b></h6>
+                                <span>@item.Tarih</span>
+                            </div>
+                            <div class="comment-content">
+                              @item.Yorum
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

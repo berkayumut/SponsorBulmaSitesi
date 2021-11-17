@@ -1,0 +1,100 @@
+﻿<link href="~/Content/Css/_sayaccss.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<body id="page-top">
+    <header class="masthead">
+        <h2 style="color:white; text-align:left;margin-left:20px;">İNSTAGRAM ÇEKİLİŞLERİ İLE TAKİPÇİ KAZAN!</h2>
+        <div class="container h-100">
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger " href="#paketler">Takipçi Paketleri</a>
+            <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="../instagram-cekilisleri">Aktif Çekilişler</a><br />
+        </div>
+    </header>
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="hakkimizda">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="section-heading text-uppercase">ÇALIŞMA ŞEKLİMİZ</h1>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="~/Images/insta.png" /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3>SAYFA ARAMAK YOK</h3>
+                            <h4 class="subheading">Hedefine uygun instagram sayfası</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted "><b>Hangi sayfada hangi kitle var ? Hangi sayfaya reklam vereyim ?</b> gibi dertler yok. Siz buradan talep veriyorsunuz biz sizin için en uygun sayfada sizi tanıtıyoruz. İstemediğin sürece sayfalarla diyaloğa girmiyorsunuz. Tek yerden istediğin kitleye ulaşabiliyorsunuz.</p></div>
+                    </div>
+                </li>
+
+                <li class="timeline-inverted">
+                    <div class="timeline-image">
+                        <img class="rounded-circle img-fluid" src="~/Images/insta.png" />
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3>PAKET SEÇ ve TALEP ET</h3>
+                            <h4 class="subheading">Ayrıntılı kitle seçme özelliği</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted"></p>İhtiyacınıza yönelik <b> çekilişle takipçi </b> ya da <b> reklam tanıtım paketini </b> seçiyorsunuz ve talep gönderiyorsunuz.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="~/Images/insta.png" /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h3>ÖDEME YÖNTEMİ</h3>
+                            <h4 class="subheading">Banka bilgileri istenmez.</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted ">Talebiniz oluştuktan sonra sizinle iletişime geçilir. Sponsorluk anlaşması tamamlanır ve ödemeniz ister banka hesaplarına eft - havale ile, ister size gönderilecek ödeme linkinden  kredi kartı ile yapabilirsiniz. </p></div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="~/Images/insta.png" /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>ÇEKİLİŞ ZAMANI</h4>
+                            <h4 class="subheading">Kitlenize yönelik en uygun sayfa</h4>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted">Talebinizdeki isteklere ve yaptığımız anlaşmaya göre en uygun instagram sayfasındaki çekilişe sponsor olursunuz.</b></p></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="~/Images/insta.png" /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>ARTIK HAZIRSIN!</h4>
+                            <h4 class="subheading">Sana uygun paketi seç, sayfanı büyütmeye başlayalım.</h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="page-section" id="paketler">
+        @Html.Action("paketlerPartial", "Partial")
+    </section>
+    <section class="page-section" id="yorumlar">
+        <div class="container">
+            @Html.Action("yorumPartial", "Partial")
+            <div class="col-md-8 comments-formm">
+
+
+                <label for="recipient-name" class="col-form-label"><b>Yorum Yapabilirsiniz</b></label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Yorumda görünecek isim" required id="isim">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="mail" placeholder="Mail adresiniz ( Zorunlu Değildir )" required id="mail">
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" class="form-control" placeholder="Düşüncelerinizi yazabilirsiniz" required id="yorum"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="yorumyap" name="name" value="Gönder" />
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+

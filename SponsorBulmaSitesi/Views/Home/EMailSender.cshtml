@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "EMailSender";
+}
+
+<h2>EMailSender</h2>
+
+<div class="container">
+
+    @if (ViewBag.Kontrol != null)
+    {
+        <h3 class="text-warning">@ViewBag.Kontrol</h3>
+    }
+
+
+    <div class="col-lg-5" ng-app="">
+        @using (Html.BeginForm("EMailSender", "Home", FormMethod.Post, new { @name = "myForm" }))
+        {
+
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" name="sendMailAdress" placeholder="Email Adressi" />
+
+            </div>
+
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" name="subject" placeholder="subject" id="sifre" />
+
+            </div>
+            <div class="form-group">
+
+                <textarea name="body" class="form-control" placeholder="Açıklama"></textarea>
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                <input type="submit" class="form-control btn-success" value="Kayıt Ol" />
+
+            </div>
+
+
+        }
+    </div>
+
+</div>
+

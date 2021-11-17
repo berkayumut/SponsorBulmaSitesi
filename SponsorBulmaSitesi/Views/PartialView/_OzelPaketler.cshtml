@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblPaketler>
+
+@{
+    Session.Add("Token", "Paketler");
+}
+
+<section class="pricing py-5">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">ÖZEL TAKİPÇİ PAKETLERİMİZ</h2>
+            <h3 class="section-subheading text-muted">İnstagram hesaplarının özel kampanya olarak yaptığı çekilişler. SPONSOR OL! HESABIN BÜYÜSÜN.</h3>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4" style="margin-top:20px;">
+                    <div class="card mb-5 mb-lg-0" style="background-color:#ffffff">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">@item.PaketAdi</h5>
+                            <h6 class="card-price text-center">₺@item.Fiyati</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>@item.KTakipciSayisi Takipçi </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>@item.PaketAciklama</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Başlama Tarihi: @item.CekilisTarihi</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Çekilişe sponsor olursunuz, aktif kullanıcılar kendileri takip eder.</li>
+                                @if (item.Fiyati >= 3000)
+                                {
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>3000 TL üzeri siparişlerde ödemeyi yapmadan önce ileşime geçilir.</li>
+                                }
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Sponsor olduğunuz çekilişi işlem kodunuz ile takip edebilirsiniz.</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Çekiliş yapacak sayfa bellidir. </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Çekilişler sayfasındaki çekilişlere bakarak sponsor olan sayfa örneklerini görebilirsiniz.</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>HAVALE - EFT yada 3D SECURE ile güvenli ödeme yapabilirsiniz.</li>
+                            </ul>
+                            <a href="../talep-olustur/@item.PaketSeoUrl" id="talepgonder" class="btn btn-block btn-primary text-uppercase">Sponsor Ol</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

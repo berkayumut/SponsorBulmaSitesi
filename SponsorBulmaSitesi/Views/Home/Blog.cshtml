@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblYazilar>
+
+@{
+    ViewBag.Title = "Blog";
+}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<div class="container" style="margin-top:100px; min-height:1000px;">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <div id="postlist">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3> @item.YaziBaslik...</h3><a href="#">Read more</a>
+                        </div>
+                        <hr />
+                        <div class="panel-footer">
+                            <span class="label label-default">@item.TblYaziKategori.YaziKategorisi</span> |
+                            <span class="label label-default">@item.YaziTarih</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    }
+</div>

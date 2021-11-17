@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblPaketler>
+
+@{
+    ViewBag.Title = "Paketler";
+}
+
+<body>
+
+    
+    <div class="container" style="margin-top:10px">
+        <p>
+            @Html.ActionLink("Yeni Paket Ekle", "PaketEkle")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaketAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaketAciklama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KTakipciSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fiyati)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaketAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaketAciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTakipciSayisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fiyati)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Duzenle", "PaketGuncelle", new { id = item.Id }) |
+                        @if (item.Aktif == "Aktif")
+                        {
+                            @Html.ActionLink("Pasif Yap", "PaketAktif", new { id = item.Id })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Aktif Yap", "PaketAktif", new { id = item.Id })
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+
+
+

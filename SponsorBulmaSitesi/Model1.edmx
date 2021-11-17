@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBBonusSMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblBankalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankaAdi" Type="varchar" MaxLength="50" />
+          <Property Name="IbanNo" Type="varchar" MaxLength="50" />
+          <Property Name="HesapNo" Type="varchar" MaxLength="50" />
+          <Property Name="Isim" Type="varchar" MaxLength="50" />
+          <Property Name="BankaLogo" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="TblCekilisler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CekilisLinki" Type="varchar" MaxLength="100" />
+          <Property Name="CekilisTarihi" Type="smalldatetime" />
+          <Property Name="CekilisDurumu" Type="varchar" MaxLength="20" />
+          <Property Name="CekilisBitisTarihi" Type="smalldatetime" />
+          <Property Name="ToplamOdul" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblFenomenler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FenomenAdi" Type="varchar" MaxLength="50" />
+          <Property Name="TakipciSayisi" Type="varchar" MaxLength="10" />
+          <Property Name="TakipciKapasite" Type="varchar" MaxLength="50" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="InstaUrl" Type="varchar" MaxLength="200" />
+          <Property Name="Foto" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblMetaEtiketleri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetaEtiket" Type="varchar" MaxLength="50" />
+          <Property Name="Baslik" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblPaketKategoriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblPaketler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaketAdi" Type="varchar" MaxLength="50" />
+          <Property Name="PaketAciklama" Type="varchar" MaxLength="250" />
+          <Property Name="KTakipciSayisi" Type="varchar" MaxLength="20" />
+          <Property Name="Fiyati" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Aktif" Type="varchar" MaxLength="10" />
+          <Property Name="PaketSeoUrl" Type="varchar" MaxLength="50" />
+          <Property Name="Kategori" Type="int" />
+          <Property Name="TeslimSuresi" Type="varchar" MaxLength="50" />
+          <Property Name="PaylasacakSayfalar" Type="varchar" MaxLength="200" />
+          <Property Name="CekilisTarihi" Type="smalldatetime" />
+          <Property Name="OdemeLink" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblSayfalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uye" Type="int" />
+          <Property Name="SayfaAdi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblTalepler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TalepKodu" Type="varchar" MaxLength="10" />
+          <Property Name="Paket" Type="int" />
+          <Property Name="Adi" Type="varchar" MaxLength="50" />
+          <Property Name="SayfaAdi" Type="varchar" MaxLength="50" />
+          <Property Name="ProfilLink" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Telefon" Type="varchar" MaxLength="50" />
+          <Property Name="TalepCinsiyet" Type="varchar" MaxLength="50" />
+          <Property Name="TalepYas" Type="varchar" MaxLength="50" />
+          <Property Name="TalepTarih" Type="smalldatetime" />
+          <Property Name="CekilisLink" Type="varchar" MaxLength="100" />
+          <Property Name="TalepAciklama" Type="varchar" MaxLength="500" />
+          <Property Name="TalepDurum" Type="varchar" MaxLength="20" />
+          <Property Name="TalepOdeme" Type="varchar" MaxLength="20" />
+          <Property Name="DekontDurumu" Type="varchar" MaxLength="20" />
+          <Property Name="DekontFoto" Type="varchar" MaxLength="500" />
+          <Property Name="WhatsapGrubu" Type="varchar" MaxLength="10" />
+          <Property Name="OdemeSekli" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblUyeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="varchar" MaxLength="50" />
+          <Property Name="Soyadi" Type="varchar" MaxLength="50" />
+          <Property Name="Telefon" Type="varchar" MaxLength="13" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblYaziKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YaziKategorisi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblYazilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YaziBaslik" Type="varchar" MaxLength="200" />
+          <Property Name="YaziMetin" Type="varchar" MaxLength="8000" />
+          <Property Name="YaziTarih" Type="smalldatetime" />
+          <Property Name="YaziDurum" Type="varchar" MaxLength="20" />
+          <Property Name="YaziSeoUrl" Type="varchar" MaxLength="70" />
+          <Property Name="YaziKategori" Type="int" />
+        </EntityType>
+        <EntityType Name="TblYaziYorumlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yazi" Type="int" />
+          <Property Name="Yorum" Type="varchar" MaxLength="500" />
+          <Property Name="YorumAdi" Type="varchar" MaxLength="50" />
+          <Property Name="YorumDurum" Type="varchar" MaxLength="30" />
+          <Property Name="YorumMail" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="TblYorumlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YorumAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Yorum" Type="varchar" MaxLength="250" />
+          <Property Name="Tarih" Type="smalldatetime" />
+          <Property Name="YorumMail" Type="varchar" MaxLength="50" />
+          <Property Name="YorumOnay" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_TblPaketler_TblPaketKategoriler">
+          <End Role="TblPaketKategoriler" Type="Self.TblPaketKategoriler" Multiplicity="0..1" />
+          <End Role="TblPaketler" Type="Self.TblPaketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPaketKategoriler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPaketler">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSayfalar_TblUyeler">
+          <End Role="TblUyeler" Type="Self.TblUyeler" Multiplicity="0..1" />
+          <End Role="TblSayfalar" Type="Self.TblSayfalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUyeler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblSayfalar">
+              <PropertyRef Name="Uye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblTalepler_TblPaketler">
+          <End Role="TblPaketler" Type="Self.TblPaketler" Multiplicity="0..1" />
+          <End Role="TblTalepler" Type="Self.TblTalepler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPaketler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblTalepler">
+              <PropertyRef Name="Paket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblYazilar_TblYaziKategori">
+          <End Role="TblYaziKategori" Type="Self.TblYaziKategori" Multiplicity="0..1" />
+          <End Role="TblYazilar" Type="Self.TblYazilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblYaziKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblYazilar">
+              <PropertyRef Name="YaziKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblYaziYorumlar_TblYazilar">
+          <End Role="TblYazilar" Type="Self.TblYazilar" Multiplicity="0..1" />
+          <End Role="TblYaziYorumlar" Type="Self.TblYaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblYazilar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblYaziYorumlar">
+              <PropertyRef Name="Yazi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBonusSMModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBankalar" EntityType="Self.TblBankalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCekilisler" EntityType="Self.TblCekilisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblFenomenler" EntityType="Self.TblFenomenler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMetaEtiketleri" EntityType="Self.TblMetaEtiketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPaketKategoriler" EntityType="Self.TblPaketKategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPaketler" EntityType="Self.TblPaketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSayfalar" EntityType="Self.TblSayfalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblTalepler" EntityType="Self.TblTalepler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblUyeler" EntityType="Self.TblUyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblYaziKategori" EntityType="Self.TblYaziKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblYazilar" EntityType="Self.TblYazilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblYaziYorumlar" EntityType="Self.TblYaziYorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblYorumlar" EntityType="Self.TblYorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblPaketler_TblPaketKategoriler" Association="Self.FK_TblPaketler_TblPaketKategoriler">
+            <End Role="TblPaketKategoriler" EntitySet="TblPaketKategoriler" />
+            <End Role="TblPaketler" EntitySet="TblPaketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSayfalar_TblUyeler" Association="Self.FK_TblSayfalar_TblUyeler">
+            <End Role="TblUyeler" EntitySet="TblUyeler" />
+            <End Role="TblSayfalar" EntitySet="TblSayfalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblTalepler_TblPaketler" Association="Self.FK_TblTalepler_TblPaketler">
+            <End Role="TblPaketler" EntitySet="TblPaketler" />
+            <End Role="TblTalepler" EntitySet="TblTalepler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblYazilar_TblYaziKategori" Association="Self.FK_TblYazilar_TblYaziKategori">
+            <End Role="TblYaziKategori" EntitySet="TblYaziKategori" />
+            <End Role="TblYazilar" EntitySet="TblYazilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblYaziYorumlar_TblYazilar" Association="Self.FK_TblYaziYorumlar_TblYazilar">
+            <End Role="TblYazilar" EntitySet="TblYazilar" />
+            <End Role="TblYaziYorumlar" EntitySet="TblYaziYorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBonusSMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TblFenomenler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FenomenAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TakipciSayisi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TakipciKapasite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="InstaUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblPaketler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaketAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaketAciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="KTakipciSayisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fiyati" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="TblTalepler" Relationship="DBBonusSMModel.FK_TblTalepler_TblPaketler" FromRole="TblPaketler" ToRole="TblTalepler" />
+          <Property Name="Aktif" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PaketSeoUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kategori" Type="Int32" />
+          <Property Name="TeslimSuresi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblPaketKategoriler" Relationship="DBBonusSMModel.FK_TblPaketler_TblPaketKategoriler" FromRole="TblPaketler" ToRole="TblPaketKategoriler" />
+          <Property Name="PaylasacakSayfalar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CekilisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="OdemeLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblSayfalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uye" Type="Int32" />
+          <Property Name="SayfaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblUyeler" Relationship="Self.FK_TblSayfalar_TblUyeler" FromRole="TblSayfalar" ToRole="TblUyeler" />
+        </EntityType>
+        <EntityType Name="TblUyeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblSayfalar" Relationship="Self.FK_TblSayfalar_TblUyeler" FromRole="TblUyeler" ToRole="TblSayfalar" />
+        </EntityType>
+        <Association Name="FK_TblSayfalar_TblUyeler">
+          <End Role="TblUyeler" Type="Self.TblUyeler" Multiplicity="0..1" />
+          <End Role="TblSayfalar" Type="Self.TblSayfalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUyeler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblSayfalar">
+              <PropertyRef Name="Uye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBonusSMEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TblFenomenler" EntityType="Self.TblFenomenler" />
+          <EntitySet Name="TblPaketler" EntityType="Self.TblPaketler" />
+          <EntitySet Name="TblSayfalar" EntityType="Self.TblSayfalar" />
+          <EntitySet Name="TblUyeler" EntityType="Self.TblUyeler" />
+          <AssociationSet Name="FK_TblSayfalar_TblUyeler" Association="Self.FK_TblSayfalar_TblUyeler">
+            <End Role="TblUyeler" EntitySet="TblUyeler" />
+            <End Role="TblSayfalar" EntitySet="TblSayfalar" />
+          </AssociationSet>
+          <EntitySet Name="TblCekilisler" EntityType="DBBonusSMModel.TblCekilisler" />
+          <EntitySet Name="TblTalepler" EntityType="DBBonusSMModel.TblTalepler" />
+          <AssociationSet Name="FK_TblTalepler_TblPaketler" Association="DBBonusSMModel.FK_TblTalepler_TblPaketler">
+            <End Role="TblPaketler" EntitySet="TblPaketler" />
+            <End Role="TblTalepler" EntitySet="TblTalepler" />
+          </AssociationSet>
+          <EntitySet Name="TblAdmin" EntityType="DBBonusSMModel.TblAdmin" />
+          <EntitySet Name="TblBankalar" EntityType="DBBonusSMModel.TblBankalar" />
+          <EntitySet Name="TblMetaEtiketleri" EntityType="DBBonusSMModel.TblMetaEtiketleri" />
+          <EntitySet Name="TblYorumlar" EntityType="DBBonusSMModel.TblYorumlar" />
+          <EntitySet Name="TblPaketKategoriler" EntityType="DBBonusSMModel.TblPaketKategoriler" />
+          <AssociationSet Name="FK_TblPaketler_TblPaketKategoriler" Association="DBBonusSMModel.FK_TblPaketler_TblPaketKategoriler">
+            <End Role="TblPaketKategoriler" EntitySet="TblPaketKategoriler" />
+            <End Role="TblPaketler" EntitySet="TblPaketler" />
+          </AssociationSet>
+          <EntitySet Name="TblYaziKategori" EntityType="DBBonusSMModel.TblYaziKategori" />
+          <EntitySet Name="TblYazilar" EntityType="DBBonusSMModel.TblYazilar" />
+          <EntitySet Name="TblYaziYorumlar" EntityType="DBBonusSMModel.TblYaziYorumlar" />
+          <AssociationSet Name="FK_TblYazilar_TblYaziKategori" Association="DBBonusSMModel.FK_TblYazilar_TblYaziKategori">
+            <End Role="TblYaziKategori" EntitySet="TblYaziKategori" />
+            <End Role="TblYazilar" EntitySet="TblYazilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblYaziYorumlar_TblYazilar" Association="DBBonusSMModel.FK_TblYaziYorumlar_TblYazilar">
+            <End Role="TblYazilar" EntitySet="TblYazilar" />
+            <End Role="TblYaziYorumlar" EntitySet="TblYaziYorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TblCekilisler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CekilisLinki" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CekilisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="CekilisDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CekilisBitisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="ToplamOdul" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblTalepler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TalepKodu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Paket" Type="Int32" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TalepCinsiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TalepYas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TalepAciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TalepDurum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TalepOdeme" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblPaketler" Relationship="DBBonusSMModel.FK_TblTalepler_TblPaketler" FromRole="TblTalepler" ToRole="TblPaketler" />
+          <Property Name="SayfaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfilLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TalepTarih" Type="DateTime" Precision="0" />
+          <Property Name="CekilisLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DekontDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DekontFoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WhatsapGrubu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OdemeSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_TblTalepler_TblPaketler">
+          <End Type="DBBonusSMModel.TblPaketler" Role="TblPaketler" Multiplicity="0..1" />
+          <End Type="DBBonusSMModel.TblTalepler" Role="TblTalepler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPaketler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblTalepler">
+              <PropertyRef Name="Paket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblBankalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IbanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HesapNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankaLogo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblMetaEtiketleri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetaEtiket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblYorumlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YorumAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Yorum" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="YorumMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YorumOnay" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblPaketKategoriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblPaketler" Relationship="DBBonusSMModel.FK_TblPaketler_TblPaketKategoriler" FromRole="TblPaketKategoriler" ToRole="TblPaketler" />
+        </EntityType>
+        <Association Name="FK_TblPaketler_TblPaketKategoriler">
+          <End Type="DBBonusSMModel.TblPaketKategoriler" Role="TblPaketKategoriler" Multiplicity="0..1" />
+          <End Type="DBBonusSMModel.TblPaketler" Role="TblPaketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPaketKategoriler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPaketler">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblYaziKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YaziKategorisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblYazilar" Relationship="DBBonusSMModel.FK_TblYazilar_TblYaziKategori" FromRole="TblYaziKategori" ToRole="TblYazilar" />
+        </EntityType>
+        <EntityType Name="TblYazilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YaziBaslik" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="YaziMetin" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="YaziTarih" Type="DateTime" Precision="0" />
+          <Property Name="YaziDurum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YaziSeoUrl" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="YaziKategori" Type="Int32" />
+          <NavigationProperty Name="TblYaziKategori" Relationship="DBBonusSMModel.FK_TblYazilar_TblYaziKategori" FromRole="TblYazilar" ToRole="TblYaziKategori" />
+          <NavigationProperty Name="TblYaziYorumlar" Relationship="DBBonusSMModel.FK_TblYaziYorumlar_TblYazilar" FromRole="TblYazilar" ToRole="TblYaziYorumlar" />
+        </EntityType>
+        <EntityType Name="TblYaziYorumlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yazi" Type="Int32" />
+          <Property Name="Yorum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YorumAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YorumDurum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="YorumMail" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblYazilar" Relationship="DBBonusSMModel.FK_TblYaziYorumlar_TblYazilar" FromRole="TblYaziYorumlar" ToRole="TblYazilar" />
+        </EntityType>
+        <Association Name="FK_TblYazilar_TblYaziKategori">
+          <End Type="DBBonusSMModel.TblYaziKategori" Role="TblYaziKategori" Multiplicity="0..1" />
+          <End Type="DBBonusSMModel.TblYazilar" Role="TblYazilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblYaziKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblYazilar">
+              <PropertyRef Name="YaziKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblYaziYorumlar_TblYazilar">
+          <End Type="DBBonusSMModel.TblYazilar" Role="TblYazilar" Multiplicity="0..1" />
+          <End Type="DBBonusSMModel.TblYaziYorumlar" Role="TblYaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblYazilar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblYaziYorumlar">
+              <PropertyRef Name="Yazi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBonusSMModelStoreContainer" CdmEntityContainer="DBBonusSMEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBBonusSMModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFenomenler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblFenomenler">
+              <MappingFragment StoreEntitySet="TblFenomenler">
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="InstaUrl" ColumnName="InstaUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FenomenAdi" ColumnName="FenomenAdi" />
+                <ScalarProperty Name="TakipciSayisi" ColumnName="TakipciSayisi" />
+                <ScalarProperty Name="TakipciKapasite" ColumnName="TakipciKapasite" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPaketler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblPaketler">
+              <MappingFragment StoreEntitySet="TblPaketler">
+                <ScalarProperty Name="OdemeLink" ColumnName="OdemeLink" />
+                <ScalarProperty Name="CekilisTarihi" ColumnName="CekilisTarihi" />
+                <ScalarProperty Name="PaylasacakSayfalar" ColumnName="PaylasacakSayfalar" />
+                <ScalarProperty Name="TeslimSuresi" ColumnName="TeslimSuresi" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+                <ScalarProperty Name="PaketSeoUrl" ColumnName="PaketSeoUrl" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaketAdi" ColumnName="PaketAdi" />
+                <ScalarProperty Name="PaketAciklama" ColumnName="PaketAciklama" />
+                <ScalarProperty Name="KTakipciSayisi" ColumnName="KTakipciSayisi" />
+                <ScalarProperty Name="Fiyati" ColumnName="Fiyati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSayfalar">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblSayfalar">
+              <MappingFragment StoreEntitySet="TblSayfalar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Uye" ColumnName="Uye" />
+                <ScalarProperty Name="SayfaAdi" ColumnName="SayfaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblUyeler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblUyeler">
+              <MappingFragment StoreEntitySet="TblUyeler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCekilisler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblCekilisler">
+              <MappingFragment StoreEntitySet="TblCekilisler">
+                <ScalarProperty Name="ToplamOdul" ColumnName="ToplamOdul" />
+                <ScalarProperty Name="CekilisBitisTarihi" ColumnName="CekilisBitisTarihi" />
+                <ScalarProperty Name="CekilisDurumu" ColumnName="CekilisDurumu" />
+                <ScalarProperty Name="CekilisTarihi" ColumnName="CekilisTarihi" />
+                <ScalarProperty Name="CekilisLinki" ColumnName="CekilisLinki" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblTalepler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblTalepler">
+              <MappingFragment StoreEntitySet="TblTalepler">
+                <ScalarProperty Name="OdemeSekli" ColumnName="OdemeSekli" />
+                <ScalarProperty Name="WhatsapGrubu" ColumnName="WhatsapGrubu" />
+                <ScalarProperty Name="DekontFoto" ColumnName="DekontFoto" />
+                <ScalarProperty Name="DekontDurumu" ColumnName="DekontDurumu" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CekilisLink" ColumnName="CekilisLink" />
+                <ScalarProperty Name="TalepTarih" ColumnName="TalepTarih" />
+                <ScalarProperty Name="ProfilLink" ColumnName="ProfilLink" />
+                <ScalarProperty Name="SayfaAdi" ColumnName="SayfaAdi" />
+                <ScalarProperty Name="TalepOdeme" ColumnName="TalepOdeme" />
+                <ScalarProperty Name="TalepDurum" ColumnName="TalepDurum" />
+                <ScalarProperty Name="TalepAciklama" ColumnName="TalepAciklama" />
+                <ScalarProperty Name="TalepYas" ColumnName="TalepYas" />
+                <ScalarProperty Name="TalepCinsiyet" ColumnName="TalepCinsiyet" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Paket" ColumnName="Paket" />
+                <ScalarProperty Name="TalepKodu" ColumnName="TalepKodu" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAdmin">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblAdmin">
+              <MappingFragment StoreEntitySet="TblAdmin">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBankalar">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblBankalar">
+              <MappingFragment StoreEntitySet="TblBankalar">
+                <ScalarProperty Name="BankaLogo" ColumnName="BankaLogo" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="IbanNo" ColumnName="IbanNo" />
+                <ScalarProperty Name="BankaAdi" ColumnName="BankaAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMetaEtiketleri">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblMetaEtiketleri">
+              <MappingFragment StoreEntitySet="TblMetaEtiketleri">
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="MetaEtiket" ColumnName="MetaEtiket" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblYorumlar">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblYorumlar">
+              <MappingFragment StoreEntitySet="TblYorumlar">
+                <ScalarProperty Name="YorumOnay" ColumnName="YorumOnay" />
+                <ScalarProperty Name="YorumMail" ColumnName="YorumMail" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="YorumAdi" ColumnName="YorumAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPaketKategoriler">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblPaketKategoriler">
+              <MappingFragment StoreEntitySet="TblPaketKategoriler">
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblYaziKategori">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblYaziKategori">
+              <MappingFragment StoreEntitySet="TblYaziKategori">
+                <ScalarProperty Name="YaziKategorisi" ColumnName="YaziKategorisi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblYazilar">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblYazilar">
+              <MappingFragment StoreEntitySet="TblYazilar">
+                <ScalarProperty Name="YaziKategori" ColumnName="YaziKategori" />
+                <ScalarProperty Name="YaziSeoUrl" ColumnName="YaziSeoUrl" />
+                <ScalarProperty Name="YaziDurum" ColumnName="YaziDurum" />
+                <ScalarProperty Name="YaziTarih" ColumnName="YaziTarih" />
+                <ScalarProperty Name="YaziMetin" ColumnName="YaziMetin" />
+                <ScalarProperty Name="YaziBaslik" ColumnName="YaziBaslik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblYaziYorumlar">
+            <EntityTypeMapping TypeName="DBBonusSMModel.TblYaziYorumlar">
+              <MappingFragment StoreEntitySet="TblYaziYorumlar">
+                <ScalarProperty Name="YorumMail" ColumnName="YorumMail" />
+                <ScalarProperty Name="YorumDurum" ColumnName="YorumDurum" />
+                <ScalarProperty Name="YorumAdi" ColumnName="YorumAdi" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="Yazi" ColumnName="Yazi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,110 @@
+﻿@model SponsorBulmaSitesi.TblTalepler
+
+
+<link href="~/Content/Css/_UyeIslemTablocss.css" rel="stylesheet" />
+
+<body style="background-color:#f1f1f1">
+
+    <div class="container" style="margin-top:10px">
+        <h3>İŞLEM BİLGİSİ</h3>
+        <table class="table table-responsive" style="font-size:small">
+            <tr>
+                <th>
+                    TALEP KODU
+                </th>
+                <th>
+                    ÇEKİLİŞ LİNK
+                </th>
+                <th>
+                    TELEFON
+                </th>
+                <th>
+                    WHATSAPP
+                </th>
+                <th>
+                    SAYFA
+                </th>
+                <th>
+                    PAKET
+                </th>
+                <th>
+                    TALEP CİNSİYET
+                </th>
+                <th>
+                    TALEP YAŞ
+                </th>
+                <th>
+                    AÇIKLAMA
+                </th>
+                <th>
+                    DEKONT
+                </th>
+                <th>
+                    DURUM
+                </th>
+                <th>
+                    ÖDEME DURUMU
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+
+            <tr>
+                <td>
+                    @Model.TalepKodu
+                </td>
+                <td>
+                    <a href="@Model.CekilisLink">@Model.CekilisLink</a>
+                </td>
+                <td>
+                    @Model.Telefon
+                </td>
+                <td>
+                    @Model.WhatsapGrubu
+                </td>
+                <td>
+                    @Model.SayfaAdi
+                </td>
+                <td>
+                    @Model.TblPaketler.PaketAdi
+                </td>
+                <td>
+                    @Model.TalepCinsiyet
+                </td>
+                <td>
+                    @Model.TalepYas
+                </td>
+                <td>
+                    @Model.TalepAciklama
+                </td>
+                @if (Model.DekontDurumu == "Gönderilmedi")
+                {
+
+                    <td>
+                        @Model.DekontDurumu
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="~/Images/Dekontlar/@Model.DekontFoto" rel="lightbox" title="my caption"><img src="~/Images/Dekontlar/@Model.DekontFoto" width="60" height="60" /></a>
+
+                    </td>
+                }
+
+                <td>
+                    @Model.TalepDurum
+                </td>
+                <td>
+                    @Model.TalepOdeme
+                </td>
+                <td>
+                    <a href="/Admin/TalepGuncelle/@Model.Id">Talep Güncelle</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+

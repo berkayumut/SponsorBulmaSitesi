@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblPaketler>
+
+@{
+    Session.Add("Token", "Paketler");
+}
+
+<section class="pricing py-5">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">ÇEKİLİŞ İLE TAKİPÇİ PAKETLERİMİZ</h2>
+            <h3 class="section-subheading text-muted">İnstagram hesaplarının sürekli olarak yaptığı genel takipçi çekilişleri. SPONSOR OL! HESABIN BÜYÜSÜN.</h3>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4" style="margin-top:20px;">
+                    <div class="card mb-5 mb-lg-0" style="background-color:#ffffff">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">@item.PaketAdi</h5>
+                            <h6 class="card-price text-center">₺@item.Fiyati</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>@item.KTakipciSayisi Takipçi </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>@item.PaketAciklama</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Tamamlanma Süresi: @item.TeslimSuresi</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Çekilişe sponsor olursunuz, aktif kullanıcılar kendileri takip eder.</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Talep oluşturduktan sonra sizinle iletişime geçilir.</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Çekilişler sayfasındaki çekilişlere bakarak sponsor olan sayfa örneklerini görebilirsiniz.</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>HAVALE - EFT yada 3D SECURE ile güvenli ödeme yapabilirsiniz.</li>
+                            </ul>
+                            <a href="../talep-olustur/@item.PaketSeoUrl" id="talepgonder" class="btn btn-block btn-primary text-uppercase">Talep Ver</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblBankalar>
+<div class="row">
+    <h2>Banka Hesapları</h2>
+    <div class="col-lg-12">
+        <input type="search" class="form-control" id="input-search" placeholder="Banka adı ara...">
+    </div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <div class="itemss col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="info-block block-info">
+                    <h5>Banka Adı: <i style="color:red">@item.BankaAdi</i></h5>
+                    <label><b>Hesap Sahibi:</b> <i style="color:black;font-size:large">@item.Isim</i></label><br />
+                    <label><b>İban No:</b> <i style="color:black;font-size:large">@item.IbanNo</i></label><br />
+                    <label><b>Hesap No:</b> <i style="color:black; font-size:large">@item.HesapNo</i></label><br />
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+</div>

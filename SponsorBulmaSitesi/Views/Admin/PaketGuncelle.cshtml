@@ -1,0 +1,92 @@
+﻿@model SponsorBulmaSitesi.TblPaketler
+
+@{
+    ViewBag.Title = "PaketGuncelle";
+}
+<body>
+    
+    <div class="container" style="margin-top:10px">
+        <form action="/Admin/PaketGuncelle" method="post">
+
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>TblPaketler</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Kategori</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("Kategori", null, htmlAttributes: new { name = "KategoriId", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PaketAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PaketAdi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PaketAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PaketAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PaketAciklama, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PaketAciklama, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KTakipciSayisi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.KTakipciSayisi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KTakipciSayisi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fiyati, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Fiyati, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Fiyati, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TeslimSuresi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TeslimSuresi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TeslimSuresi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Çekiliş Tarihi</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CekilisTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CekilisTarihi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Çekiliş Tarihi</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.OdemeLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OdemeLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <input type="hidden" name="PaketSeoUrl" value="@Model.PaketSeoUrl" />
+                <input type="hidden" name="Aktif" value="@Model.Aktif" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Güncelle" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div>
+            @Html.ActionLink("Geri Dön", "Paketler")
+        </div>
+
+    </div>
+</body>
+

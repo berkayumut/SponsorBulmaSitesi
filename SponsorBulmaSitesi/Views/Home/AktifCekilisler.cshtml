@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblCekilisler>
+@{
+    ViewBag.Title = "AktifCekilisler";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="~/Content/Css/ustkisim.css" rel="stylesheet" />
+  
+</head>
+    
+<body>
+    <section class="page-section">
+        <div class="text-center" style="margin-top:70px;">
+            <h2>Aktif İnstagram Çekilişleri</h2>
+            <label><b>Dilediğine katıl, kazanma şansı yakala</b></label>
+        </div>
+        <hr />
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="col-lg-4">
+                        <div class="our-team-main">
+
+                            <div class="team-front">
+
+                                <img class="img-fluid" src="~/Images/insta.png" />
+                                <h2 style="color:green">@item.CekilisDurumu</h2>
+                                <h3>@item.CekilisBitisTarihi</h3>
+
+                            </div>
+
+                            <div class="team-back text-center" style="background-color:#ff43b1">
+                                <div style="margin-top:20px;">
+                                    <h2 class="text-center">@item.ToplamOdul</h2>
+                                    <a class="btn btn-success text-center" href="@item.CekilisLinki"> Hemen Katıl</a><br />
+                                </div>
+                               
+                                <div class="text-center" style="margin-top:10px;">
+
+
+                                    <img class="img-fluid" src="~/Images/logo.png" />
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+
+
+
+            </div>
+            @Html.Action("paketlerPartial", "Partial")
+        </section>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SponsorBulmaSitesi.TblSatilanPaketler>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="~/Scripts/Js/UyeIslemList.js"></script>
+<link href="~/Content/Css/_UyeIslemTablocss.css" rel="stylesheet" />
+<!------ Include the above in your HEAD tag ---------->
+<div class="container marginTop20">
+    <table id="scrollableTable" class="table table-responsive table-sm scrollTable">
+        <thead>
+            <tr>
+                <th>Sayfa Adı</th>
+                <th>Paket</th>
+                <th>Tarih</th>
+                <th>Durum</th>
+                <th>Çekiliş Tarihi</th>
+                <th>Çekiliş Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TblSayfalar.SayfaAdi</td>
+                    <td>@item.TblPaketler.PaketAdi</td>
+                    <td>@item.Tarih</td>
+                    <td>@item.Durum</td>
+                    <td>@item.CekilisTarihi</td>
+                    <td>@item.CekilisLink</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

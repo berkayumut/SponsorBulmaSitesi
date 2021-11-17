@@ -1,0 +1,50 @@
+﻿@model SponsorBulmaSitesi.TblPaketler
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblPaketler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaketAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaketAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaketAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaketAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KTakipciSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KTakipciSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyati)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
